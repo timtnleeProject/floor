@@ -4,7 +4,14 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 
 export default function Header() {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="white" variant="light" className="mb-3 shadow-sm">
+    <Navbar
+      as="header"
+      collapseOnSelect
+      expand="lg"
+      bg="white"
+      variant="light"
+      className="mb-3 shadow-sm"
+    >
       <Container>
         <Navbar.Brand as={Link} to="/" className="fw-bold">
           FLOOR
@@ -23,7 +30,7 @@ export default function Header() {
               <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
             </NavDropdown>
           </Nav> */}
-          <Nav>
+          <Nav as="nav">
             <Nav.Link as={Link} to="/demo">
               Cat-one
             </Nav.Link>

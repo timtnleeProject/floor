@@ -11,34 +11,26 @@ const bgSlideStyle = css`
   background-size: cover;
 `;
 
+const imgLinks = [
+  "https://images.pexels.com/photos/1669799/pexels-photo-1669799.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+  "https://images.pexels.com/photos/6480211/pexels-photo-6480211.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+  "https://images.pexels.com/photos/5997967/pexels-photo-5997967.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+];
+
 export default function Banner() {
   return (
     <Container>
       <Carousel interval={2500} pause={false}>
-        <Carousel.Item>
-          <div
-            css={css`
-              ${bgSlideStyle}
-              background-image: url("https://cdn.pixabay.com/photo/2016/05/05/02/37/sunset-1373171_960_720.jpg");
-            `}
-          ></div>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div
-            css={css`
-              ${bgSlideStyle}
-              background-image: url("https://cdn.pixabay.com/photo/2018/06/13/18/20/waves-3473335_960_720.jpg");
-            `}
-          ></div>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div
-            css={css`
-              ${bgSlideStyle}
-              background-image: url("https://cdn.pixabay.com/photo/2017/05/09/03/46/alberta-2297204_960_720.jpg");
-            `}
-          ></div>
-        </Carousel.Item>
+        {imgLinks.map((link, i) => (
+          <Carousel.Item key={i}>
+            <div
+              css={css`
+                ${bgSlideStyle}
+                background-image: url(${link});
+              `}
+            ></div>
+          </Carousel.Item>
+        ))}
       </Carousel>
     </Container>
   );

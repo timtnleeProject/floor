@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
-import Header from "../components/app/Header";
 import { Col, Container, Row, Button, Offcanvas } from "react-bootstrap";
 import { css } from "@emotion/react";
+import withPageLayout from "../hoc/withPageLayout";
 
 const Grid = ({ handleClick }) => {
   const openDetail = () => {
@@ -63,52 +63,49 @@ const DemoPage = () => {
     setShow(false);
   }, []);
   return (
-    <>
-      <Header />
-      <Container as="main">
-        <Row>
-          <Grid handleClick={open} />
-          <Grid handleClick={open} />
-          <Grid handleClick={open} />
-          <Grid handleClick={open} />
-          <Grid handleClick={open} />
-          <Grid handleClick={open} />
-          <Grid handleClick={open} />
-          <Grid handleClick={open} />
-        </Row>
-        <Offcanvas
-          show={show}
-          onHide={close}
-          placement="bottom"
-          css={css`
-            height: auto !important;
-            max-height: 80vh !important;
-          `}
-        >
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title as={Container} className="fs-4">
-              名稱
-            </Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body as={Container}>
-            <Row>
-              <Col md={6} sm={12}>
-                <img
-                  className="w-100"
-                  src="https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                  alt=""
-                />
-              </Col>
-              <Col md={6} sm={12}>
-                <p>簡介</p>
-                <p>描述描述描述描述描述描述，描述描述描述描述</p>
-              </Col>
-            </Row>
-          </Offcanvas.Body>
-        </Offcanvas>
-      </Container>
-    </>
+    <Container as="main">
+      <Row>
+        <Grid handleClick={open} />
+        <Grid handleClick={open} />
+        <Grid handleClick={open} />
+        <Grid handleClick={open} />
+        <Grid handleClick={open} />
+        <Grid handleClick={open} />
+        <Grid handleClick={open} />
+        <Grid handleClick={open} />
+      </Row>
+      <Offcanvas
+        show={show}
+        onHide={close}
+        placement="bottom"
+        css={css`
+          height: auto !important;
+          max-height: 80vh !important;
+        `}
+      >
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title as={Container} className="fs-4">
+            名稱
+          </Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body as={Container}>
+          <Row>
+            <Col md={6} sm={12}>
+              <img
+                className="w-100"
+                src="https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                alt=""
+              />
+            </Col>
+            <Col md={6} sm={12}>
+              <p>簡介</p>
+              <p>描述描述描述描述描述描述，描述描述描述描述</p>
+            </Col>
+          </Row>
+        </Offcanvas.Body>
+      </Offcanvas>
+    </Container>
   );
 };
 
-export default DemoPage;
+export default withPageLayout(DemoPage);

@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Card, Container, Row, Col } from "react-bootstrap";
+import Head from "../components/app/Head";
 import Banner from "../components/home/Banner";
 import withPageLayout from "../hoc/withPageLayout";
 
@@ -20,6 +21,11 @@ const DemoCard = ({ img }) => (
 const IndexPage = () => {
   return (
     <main>
+      <Head
+        title="Demo"
+        description="Jeff, Jeff, Jeff"
+        image="https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+      />
       <Banner />
       <Container className="mt-3">
         <div className="text-center my-5">

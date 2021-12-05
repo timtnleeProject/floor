@@ -19,10 +19,13 @@ const DemoCard = ({ img }) => (
 // markup
 const IndexPage = () => {
   return (
-    <>
+    <main>
       <Banner />
       <Container className="mt-3">
-        <h2 className="text-center my-5">Why</h2>
+        <div className="text-center my-5">
+          <h1 className="py-3">Floor</h1>
+          <div>Best xxx, aaaa and bbb.</div>
+        </div>
         <Row>
           <Col md={4} sm={12}>
             <DemoCard img="https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
@@ -35,7 +38,7 @@ const IndexPage = () => {
           </Col>
         </Row>
       </Container>
-    </>
+    </main>
   );
 };
 

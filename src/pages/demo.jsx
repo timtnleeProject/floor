@@ -81,23 +81,25 @@ const DemoPage = () => {
           onHide={close}
           placement="bottom"
           css={css`
-            height: auto;
-            max-height: 70vh;
+            height: auto !important;
+            max-height: 80vh !important;
           `}
         >
           <Offcanvas.Header closeButton>
-            <Offcanvas.Title>名稱</Offcanvas.Title>
+            <Offcanvas.Title as={Container} className="fs-4">
+              名稱
+            </Offcanvas.Title>
           </Offcanvas.Header>
-          <Offcanvas.Body>
+          <Offcanvas.Body as={Container}>
             <Row>
-              <Col>
+              <Col md={6} sm={12}>
                 <img
                   className="w-100"
                   src="https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
                   alt=""
                 />
               </Col>
-              <Col>
+              <Col md={6} sm={12}>
                 <p>簡介</p>
                 <p>描述描述描述描述描述描述，描述描述描述描述</p>
               </Col>

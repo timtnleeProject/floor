@@ -2,6 +2,7 @@ import React, { useState, useCallback } from "react";
 import { Col, Container, Row, Button, Offcanvas } from "react-bootstrap";
 import { css } from "@emotion/react";
 import withPageLayout from "../hoc/withPageLayout";
+import ImageBlock from "../components/common/ImgBlock";
 
 const Grid = ({ handleClick }) => {
   const openDetail = () => {
@@ -54,10 +55,27 @@ const Grid = ({ handleClick }) => {
   );
 };
 
+const ImgSelect = ({ src, onSelect, active }) => (
+  <div>
+    <ImageBlock
+      onClick={onSelect}
+      css={css`
+        opacity: ${active ? "1" : "0.5"};
+        cursor: pointer;
+      `}
+      src={src}
+    />
+  </div>
+);
+
 const DemoPage = () => {
   const [show, setShow] = useState(false);
+  const [displayImg, setDisplayImg] = useState("");
   const open = useCallback(() => {
     setShow(true);
+    setDisplayImg(
+      "https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    );
   }, []);
   const close = useCallback(() => {
     setShow(false);
@@ -91,11 +109,38 @@ const DemoPage = () => {
         <Offcanvas.Body as={Container}>
           <Row>
             <Col md={6} sm={12}>
-              <img
-                className="w-100"
-                src="https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                alt=""
-              />
+              <div className="mb-3">
+                <ImageBlock src={displayImg}></ImageBlock>
+              </div>
+              <div
+                css={css`
+                  display: flex;
+                  width: 100%;
+                  flex-wrap: nowrap;
+                  background-color: black;
+                  > div {
+                    flex-grow: 1;
+                    img {
+                      width: 100%;
+                    }
+                  }
+                `}
+              >
+                {[
+                  "https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+                  "https://images.pexels.com/photos/6480211/pexels-photo-6480211.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+                  "https://images.pexels.com/photos/6492397/pexels-photo-6492397.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+                ].map((src, i) => (
+                  <ImgSelect
+                    key={i}
+                    src={src}
+                    onSelect={() => {
+                      setDisplayImg(src);
+                    }}
+                    active={src === displayImg}
+                  />
+                ))}
+              </div>
             </Col>
             <Col md={6} sm={12}>
               <p>簡介</p>
